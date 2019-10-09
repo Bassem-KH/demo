@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -12,6 +13,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(
  *  fields={"email"},
  *  message="L'email que vous avez indiqué est déjà utilisé"
+ * )
+ *  @ApiResource(
+ *     itemOperations={"get"},
+ *     collectionOperations={}
  * )
  */
 class User implements UserInterface
