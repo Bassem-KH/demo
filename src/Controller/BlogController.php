@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -38,6 +39,10 @@ class BlogController extends AbstractController
             'title'=>"Bievenue ici les amis !",
             'age'=>31
         ]);
+        /*return new JsonResponse([
+            'action'=>'index',
+            'time'=> time()
+        ]);*/
     }
     /**
      * @Route("/blog/new", name="blog_create")
@@ -48,11 +53,6 @@ class BlogController extends AbstractController
             $article = new Article();
         }
 
-//        $form = $this->createFormBuilder($article)
-//            ->add('title')
-//            ->add('content')
-//            ->add('image')
-//            ->getForm();
         $form=$this->createForm(ArticleType::class,$article);
         $form->handleRequest($request);
         if($form->isSubmitted()&& $form->isValid()){
@@ -81,7 +81,6 @@ class BlogController extends AbstractController
         if($form->isSubmitted()&& $form->isValid()){
             $comment->setCreatedAt(new \DateTime())
                 ->setArticle($article);
-
             $manager->persist($comment);
             $manager->flush();
 
@@ -99,4 +98,10 @@ class BlogController extends AbstractController
         ]);
     }*/
 
+    /**
+     * @Route("/blog/delete/{id}", name="blog_delete")
+     */
+    public function delete(){
+
+    }
 }

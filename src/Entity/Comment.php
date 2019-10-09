@@ -65,6 +65,10 @@ class Comment
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->content;
+    }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {

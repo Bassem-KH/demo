@@ -74,7 +74,10 @@ class Article
 
         return $this;
     }
-
+    public function __toString()
+    {
+        return $this->title;
+    }
     public function getContent(): ?string
     {
         return $this->content;
@@ -86,7 +89,10 @@ class Article
 
         return $this;
     }
-
+    /*public function __toString()
+    {
+        return $this->content;
+    }*/
     public function getImage(): ?string
     {
         return $this->image;
@@ -153,4 +159,7 @@ class Article
 
         return $this;
     }
+
+
+
 }
